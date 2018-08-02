@@ -1,0 +1,152 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+[phenoptr]: https://perkinelmer.github.io/phenoptr/
+
+# phenoptrExtra
+
+The goal of phenoptrExtra is to extend the [phenoptr] package with additional functionality for working with immunofluorescence data tables exported from the PerkinElmer inForm software.
+
+## Installation
+
+You can install the unreleased development version of phenoptrExtra from GitHub with:
+
+``` r
+devtools::install_github("gerkelab/phenoptrExtra")
+```
+
+## This Package is in the Development Stage
+
+```{r}
+library(phenoptrExtra)
+```
+
+### What works now
+
+```{r echo=FALSE}
+print_description <- function(function_name) {
+  capture.output(
+    tools::Rd2txt(paste0("man/", function_name, ".Rd"), 
+                  options = list(underline_titles = FALSE))
+  ) %>% 
+    .[grep("Description", .):(grep("Usage", .) - 3) + 2] %>% 
+    stringr::str_trim()
+}
+
+print_examples <- function(function_name) {
+  capture.output(
+    tools::Rd2txt(paste0("man/", function_name, ".Rd"), 
+                  options = list(underline_titles = FALSE))
+  ) %>% 
+    .[(grep("Examples", .) + 2):length(.)] %>% 
+    .[!grepl("Not run", .)] %>% 
+    stringr::str_trim() %>% 
+    .[. != ""]
+}
+```
+
+#### Importing
+
+```r
+import_all_csd()
+```
+
+```{r echo=FALSE, results="asis"}
+cat(">", print_description("import_all_csd"))
+```
+
+```{r echo=FALSE, results="asis"}
+cat(paste("    ex>", print_examples("import_all_csd"), collapse = "\n"))
+```
+
+#### Tidying and Preparing
+
+```r
+merge_sample_info()
+```
+
+```{r echo=FALSE, results="asis"}
+cat(">", print_description("merge_sample_info"))
+```
+
+```{r echo=FALSE, results="asis"}
+cat(paste("    ex>", print_examples("merge_sample_info"), collapse = "\n"))
+```
+
+```r
+reorder_phenotype()
+```
+
+```{r echo=FALSE, results="asis"}
+cat(">", print_description("reorder_phenotype"))
+```
+
+```{r echo=FALSE, results="asis"}
+cat(paste("    ex>", print_examples("reorder_phenotype"), collapse = "\n"))
+```
+
+#### Counting Cell Types
+
+```r
+count_observations()
+count_cells()
+```
+
+```{r echo=FALSE, results="asis"}
+cat(">", print_description("count_observations"))
+```
+
+```{r echo=FALSE, results="asis"}
+cat(paste("    ex>", print_examples("count_observations"), collapse = "\n"))
+```
+
+#### Working with IF Intensity
+
+```r
+gather_cell_intensity()
+```
+
+```{r echo=FALSE, results="asis"}
+cat(">", print_description("gather_cell_intensity"))
+```
+
+```{r echo=FALSE, results="asis"}
+#cat(paste("    ex>", print_examples("gather_cell_intensity"), collapse = "\n"))
+```
+
+```r
+choose_measure()
+```
+
+```{r echo=FALSE, results="asis"}
+cat(">", print_description("choose_measure"))
+```
+
+```{r echo=FALSE, results="asis"}
+#cat(paste("    ex>", print_examples("choose_measure"), collapse = "\n"))
+```
+
+```r
+csd %>% 
+  group_by(Sample) %>% 
+  gather_cell_intensity(
+    `CD3`   = choose_measure("Membrane",    520, "Mean"), 
+    `CD8`   = choose_measure("Membrane",    540, "Mean"),
+    `FOXP3` = choose_measure("Entire Cell", 570, "Mean"),
+    `PD1`   = choose_measure("Membrane",    620, "Mean"),
+    `PD-L1` = choose_measure("Entire Cell", 650, "Mean"),
+    `PCK`   = choose_measure("Entire Cell", 690, "Mean")
+  )
+```

@@ -1,0 +1,21 @@
+Package: phenoptrExtra
+Title: Extra functions to extend phenoptr
+Version: 0.0.0.9000
+Authors@R: person("Garrick", "Aden-Buie", , "Garrick.Aden-Buie@moffitt.org", c("aut", "cre"))
+Description: What the package does (one paragraph).
+License: What license it uses
+Imports: 
+    dplyr,
+    forcats,
+    magrittr,
+    phenoptr,
+    purrr,
+    rlang,
+    stringr,
+    tidyr
+Remotes: 
+    PerkinElmer/phenoptr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0
