@@ -26,7 +26,7 @@ reorder_phenotype <- function(
   .var_nm <- rlang::quo_name(.var)
   sort <- match.arg(sort)
 
-  extra_levels <- intersect(c("Other", "Undefined"), unique(pull(df, !!.var)))
+  extra_levels <- intersect(c("Other", "Undefined"), unique(pull(x, !!.var)))
 
   x %>%
     mutate(
