@@ -1,9 +1,12 @@
 Package: phenoptrExtra
 Title: Extra functions to extend phenoptr
-Version: 0.0.0.9000
-Authors@R: person("Garrick", "Aden-Buie", , "Garrick.Aden-Buie@moffitt.org", c("aut", "cre"))
+Version: 0.0.0.9001
+Authors@R: person("Garrick", "Aden-Buie", ,
+        "Garrick.Aden-Buie@moffitt.org", c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: What license it uses
+URL: https://github.com/GerkeLab/phenoptrExtra
+BugReports: https://github.com/GerkeLab/phenoptrExtra/issues
 Imports: 
     dplyr,
     forcats,
