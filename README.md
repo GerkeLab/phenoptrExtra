@@ -85,7 +85,7 @@ gather_cell_intensity()
 > Select IF intensity measures to associate with a phneotype.
 
 ``` r
-choose_measure()
+pick_measure()
 ```
 
 > Helper function for selecting region, frequency, and measure for cell
@@ -95,11 +95,11 @@ choose_measure()
 csd %>% 
   group_by(Sample) %>% 
   gather_cell_intensity(
-    `CD3`   = choose_measure("Membrane",    520, "Mean"), 
-    `CD8`   = choose_measure("Membrane",    540, "Mean"),
-    `FOXP3` = choose_measure("Entire Cell", 570, "Mean"),
-    `PD1`   = choose_measure("Membrane",    620, "Mean"),
-    `PD-L1` = choose_measure("Entire Cell", 650, "Mean"),
-    `PCK`   = choose_measure("Entire Cell", 690, "Mean")
+    `CD3`   = pick_measure("Membrane",    520, "Mean"), 
+    `CD8`   = pick_measure("Membrane",    540, "Mean"),
+    `FOXP3` = pick_measure("Entire Cell", 570, "Mean"),
+    `PD1`   = pick_measure("Membrane",    620, "Mean"),
+    `PD-L1` = pick_measure("Entire Cell", 650, "Mean"),
+    `PCK`   = pick_measure("Entire Cell", 690, "Mean")
   )
 ```

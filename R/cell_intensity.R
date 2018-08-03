@@ -5,7 +5,7 @@
 #' @seealso choose_measure
 #' @param csd Cell Segmentation Data
 #' @param ... Named variable pairs, e.g. `CD3 = choose_measure("Membrane", 520, "Mean")`
-#'   or `CD3 = "Membrane opal 520 Mean"`
+#'   or `CD3 = "Membrane Opal 520 Mean"`
 #' @param exclude Exclude intensity readings from cells with these `Phenotypes`.
 #' @param summarize Should the output be summarized?
 #' @return Summarized intensity measures with `group_var` column(s) and
@@ -35,7 +35,7 @@ gather_cell_intensity <- function(
     dplyr::arrange(!!!rlang::syms(group_vars(x)), measure)
 }
 
-#' Choose Measurement, Region and Frequency for Intensity Reading
+#' Pick Measurement, Region and Frequency for Intensity Reading
 #'
 #' Helper function for selecting region, frequency, and measure for cell
 #' intensity readings according to inForm column name output.
@@ -47,14 +47,21 @@ gather_cell_intensity <- function(
 #' @param measure Measurement of interest, one of: "Mean", "Min", "Max",
 #'   "Std Dev", "Total".
 #' @export
-choose_measure <- function(
+pick_measure <- function(
   region = c("Entire Cell", "Membrane", "Nucleus"),
   freq = c("520", "540", "570", "620", "650", "690"),
   measure = c("Mean", "Min", "Max", "Std Dev", "Total")
 ) {
-  region <- match.arg(region)
-  freq <- paste(freq)
-  freq <- match.arg(freq)
+  region  <- tools::toTitleCase(region)
+  measure <- tools::toTitleCase(measure)
+  region  <- match.arg(region)
+  freq    <- paste(freq)
+  freq    <- match.arg(freq)
   measure <- match.arg(measure)
   paste(region, "Opal", freq, measure)
+}
+
+choose_measure <- function(...) {
+  .Deprecated("pick_measure", msg = "choose_measure() is deprecated, use pick_measure() instead.")
+  pick_measure(...)
 }

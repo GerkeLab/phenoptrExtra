@@ -11,7 +11,7 @@ gather_cell_intensity(csd, ..., exclude = "Undefined",
 \item{csd}{Cell Segmentation Data}
 
 \item{...}{Named variable pairs, e.g. \code{CD3 = choose_measure("Membrane", 520, "Mean")}
-or \code{CD3 = "Membrane opal 520 Mean"}}
+or \code{CD3 = "Membrane Opal 520 Mean"}}
 
 \item{exclude}{Exclude intensity readings from cells with these \code{Phenotypes}.}
 

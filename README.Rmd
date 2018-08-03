@@ -127,26 +127,26 @@ cat(">", print_description("gather_cell_intensity"))
 ```
 
 ```r
-choose_measure()
+pick_measure()
 ```
 
 ```{r echo=FALSE, results="asis"}
-cat(">", print_description("choose_measure"))
+cat(">", print_description("pick_measure"))
 ```
 
 ```{r echo=FALSE, results="asis"}
-#cat(paste("    ex>", print_examples("choose_measure"), collapse = "\n"))
+#cat(paste("    ex>", print_examples("pick_measure"), collapse = "\n"))
 ```
 
 ```r
 csd %>% 
   group_by(Sample) %>% 
   gather_cell_intensity(
-    `CD3`   = choose_measure("Membrane",    520, "Mean"), 
-    `CD8`   = choose_measure("Membrane",    540, "Mean"),
-    `FOXP3` = choose_measure("Entire Cell", 570, "Mean"),
-    `PD1`   = choose_measure("Membrane",    620, "Mean"),
-    `PD-L1` = choose_measure("Entire Cell", 650, "Mean"),
-    `PCK`   = choose_measure("Entire Cell", 690, "Mean")
+    `CD3`   = pick_measure("Membrane",    520, "Mean"), 
+    `CD8`   = pick_measure("Membrane",    540, "Mean"),
+    `FOXP3` = pick_measure("Entire Cell", 570, "Mean"),
+    `PD1`   = pick_measure("Membrane",    620, "Mean"),
+    `PD-L1` = pick_measure("Entire Cell", 650, "Mean"),
+    `PCK`   = pick_measure("Entire Cell", 690, "Mean")
   )
 ```
