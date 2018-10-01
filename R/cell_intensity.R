@@ -71,3 +71,37 @@ choose_measure <- function(...) {
   .Deprecated("pick_measure", msg = "choose_measure() is deprecated, use pick_measure() instead.")
   pick_measure(...)
 }
+
+#' Color Palette by Wavelength
+#'
+#' Uses colors chosen from <https://www.nature.com/articles/nmeth.1618> as
+#' suggested in <https://petebankhead.gitbooks.io/imagej-intro/content/chapters/colors/colors.html>.
+#'
+#' @param wl Wavelength(s) or column name(s) containing wavelength.
+#' @examples
+#' color_measure()
+#' color_measure("Entire Cell Opal 540 Mean")
+#' color_measure(540)
+#'
+#' @export
+color_measure <- function(wl = NULL) {
+  colors <- c(
+    "520" = rgb(54, 255, 0, max = 255),
+    "540" = rgb(129, 255, 0, max = 255),
+    "570" = rgb(255, 255, 0, max = 255),
+    "620" = rgb(255, 119, 0, max = 255),
+    "650" = rgb(255, 0, 0, max = 255),
+    "690" = rgb(0.5, 0.5, 0.5)
+  )
+  colors <- c(
+    "520" = rgb(230, 159,   0, max = 255), # orange
+    "540" = rgb(  0, 158, 115, max = 255), # bluish green
+    "570" = rgb(240, 228,  66, max = 255), # yellow
+    "620" = rgb(  0, 114, 178, max = 255), # blue
+    "650" = rgb(204, 121, 167, max = 255), # reddish purple
+    "690" = rgb(213,  94,   0, max = 255) # vermillion
+  )
+  if (is.null(wl)) return(colors)
+  wl_number <- gsub(".+([56][24579]0).+", "\\1", paste(wl))
+  setNames(colors[paste(wl_number)], wl)
+}
