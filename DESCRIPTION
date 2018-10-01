@@ -1,8 +1,11 @@
 Package: phenoptrExtra
 Title: Extra functions to extend phenoptr
-Version: 0.0.0.9003
-Authors@R: person("Garrick", "Aden-Buie", ,
-        "Garrick.Aden-Buie@moffitt.org", c("aut", "cre"))
+Version: 0.0.0.9004
+Authors@R: 
+    person(given = "Garrick",
+           family = "Aden-Buie",
+           role = c("aut", "cre"),
+           email = "Garrick.Aden-Buie@moffitt.org")
 Description: What the package does (one paragraph).
 License: What license it uses
 URL: https://github.com/GerkeLab/phenoptrExtra

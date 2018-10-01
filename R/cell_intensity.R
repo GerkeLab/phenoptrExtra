@@ -40,17 +40,23 @@ gather_cell_intensity <- function(
 #' Helper function for selecting region, frequency, and measure for cell
 #' intensity readings according to inForm column name output.
 #'
+#' @examples
+#' pick_measure("membrane", 520, "mean")
+#' pick_measure(freq = 690, .sep = "_")
+#'
 #' @param region Region of interest, one of: "Entire Cell", "Membrane",
 #'   "Nucleus"
 #' @param freq Frequency of interest, integer or character, one of: 520, 540,
 #'   570, 620, 650, 690.
 #' @param measure Measurement of interest, one of: "Mean", "Min", "Max",
 #'   "Std Dev", "Total".
+#' @param .sep <chr> Separator between words in column names, default is space.
 #' @export
 pick_measure <- function(
   region = c("Entire Cell", "Membrane", "Nucleus"),
   freq = c("520", "540", "570", "620", "650", "690"),
-  measure = c("Mean", "Min", "Max", "Std Dev", "Total")
+  measure = c("Mean", "Min", "Max", "Std Dev", "Total"),
+  .sep = " "
 ) {
   region  <- tools::toTitleCase(region)
   measure <- tools::toTitleCase(measure)
@@ -58,7 +64,7 @@ pick_measure <- function(
   freq    <- paste(freq)
   freq    <- match.arg(freq)
   measure <- match.arg(measure)
-  paste(region, "Opal", freq, measure)
+  paste(region, "Opal", freq, measure, sep = .sep)
 }
 
 choose_measure <- function(...) {

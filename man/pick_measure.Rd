@@ -6,7 +6,7 @@
 \usage{
 pick_measure(region = c("Entire Cell", "Membrane", "Nucleus"),
   freq = c("520", "540", "570", "620", "650", "690"),
-  measure = c("Mean", "Min", "Max", "Std Dev", "Total"))
+  measure = c("Mean", "Min", "Max", "Std Dev", "Total"), .sep = " ")
 }
 \arguments{
 \item{region}{Region of interest, one of: "Entire Cell", "Membrane",
@@ -17,8 +17,15 @@ pick_measure(region = c("Entire Cell", "Membrane", "Nucleus"),
 
 \item{measure}{Measurement of interest, one of: "Mean", "Min", "Max",
 "Std Dev", "Total".}
+
+\item{.sep}{<chr> Separator between words in column names, default is space.}
 }
 \description{
 Helper function for selecting region, frequency, and measure for cell
 intensity readings according to inForm column name output.
+}
+\examples{
+pick_measure("membrane", 520, "mean")
+pick_measure(freq = 690, .sep = "_")
+
 }
